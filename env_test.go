@@ -25,7 +25,7 @@ func TestHCreateEnv(t *testing.T) {
 	}
 
 	if env.SlaveURL == "" {
-		t.Errorf("env.Bind is null")
+		t.Errorf("env.SlaveURL is null")
 		return
 	}
 }
