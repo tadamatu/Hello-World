@@ -1,7 +1,6 @@
 package todoapi
 
 import (
-	"errors"
 	"os"
 )
 
@@ -18,19 +17,21 @@ func CreateEnv() (*Env, error) {
 
 	bind := os.Getenv("TODO_BIND") // APIをListenするポート設定
 	if bind == "" {
-		env.Bind = ":8080"
+		bind = ":8080"
 	}
 	env.Bind = bind
 
 	masterURL := os.Getenv("TODO_MASTER_URL") // MySQL Masterへの接続情報
 	if masterURL == "" {
-		return nil, errors.New("TODO_MASTER_URL is not specified")
+		masterURL = "https://master.com"
+		//test// return nil, errors.New("TODO_MASTER_URL is not specified")
 	}
 	env.MasterURL = masterURL
 
 	slaveURL := os.Getenv("TODO_SLAVE_URL") // MySQL Slaveへの接続情報
 	if slaveURL == "" {
-		return nil, errors.New("TODO_SLAVE_URL is not specified")
+		slaveURL = "https://master.com"
+		//test// return nil, errors.New("TODO_SLAVE_URL is not specified")
 	}
 	env.SlaveURL = slaveURL
 
