@@ -17,7 +17,7 @@ func CreateEnv() (*Env, error) {
 
 	bind := os.Getenv("TODO_BIND") // APIをListenするポート設定
 	if bind == "" {
-		env.Bind = ":8080"
+		bind = ":8080"
 	}
 	env.Bind = bind
 
